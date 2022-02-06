@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: batm
+    database: FIVETRAN_DATABASE
+    schema: MYSQL_RDS_BATM_CUSTOM
+    tables:
+      - name: OFFLINE_ELAPSED_TIME
+        description : Raw BATM offline data.
+      - name: TERMINAL_ERRORS
+        description : Raw terminal error type data.    

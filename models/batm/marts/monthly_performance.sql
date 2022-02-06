@@ -1,6 +1,11 @@
 with a as 
 (
-  select LAST_DAY(to_date(DATETIME)) AS Month_end,serialnumber,  sum(cashamount) as volume, count(*) as Transaction_Count from"ANALYTICS"."DBT_AKEEMLC"."PERFORMANCE" 
+  select LAST_DAY(to_date(DATETIME)) AS Month_end,serialnumber,  sum(cashamount) as volume, count(*) as Transaction_Count 
+  
+  --from "ANALYTICS"."DBT_AKEEMLC"."PERFORMANCE" 
+  from {{ ref('atm_daily')}}
+
+ 
   where year = '2021' GROUP BY SERIALNUMBER,LAST_DAY(to_date(DATETIME))
  ), final as 
  (

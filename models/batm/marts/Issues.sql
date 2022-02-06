@@ -11,7 +11,8 @@ SELECT
       ,sum(datediff(hour, created, updated)) hours
       ,sum(datediff(minute, created, updated)) minutes
       ,sum(datediff(second, created, updated)) seconds
-     ,LAST_DAY(to_date(created)) AS ReportingPeriod
+     --,LAST_DAY(to_date(created)) AS ReportingPeriod
+     ,to_date(created) AS ReportingPeriod
     from 
         resolution
-group by Assignee, status,LAST_DAY(to_date(created))
+group by Assignee, status,to_date(created)
